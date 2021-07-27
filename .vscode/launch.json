@@ -5,10 +5,77 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "extensionHost",
+            "request": "launch",
+            "name": "Iniciar a Extensão",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm"
+        },
+        
+
+
+        {
+            "command": "npm start",
+            "name": "Run npm start",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "name": "PowerShell Launch Script",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "enter path or command to execute e.g.: ${workspaceFolder}/src/foo.ps1 or Invoke-Pester",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "vscode-edge-devtools.debug",
+            "request": "launch",
+            "name": "Launch Microsoft Edge and open the Edge DevTools",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "vscode-edge-devtools.debug",
+            "request": "attach",
+            "name": "Attach to Microsoft Edge and open the Edge DevTools",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach by Process ID",
+            "processId": "${command:PickProcess}",
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+
+        {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "pwa-chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
+            "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}"
         }
     ]
